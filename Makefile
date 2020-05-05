@@ -15,7 +15,7 @@ vsphere:
 	cd vsphere/ && /usr/local/bin/terraform plan
 	cd vsphere/ && /usr/local/bin/terraform apply --auto-approve
 
-vsazurephere:
+azure:
 	cd azure/ && /usr/local/bin/terraform init
 	cd azure/ && /usr/local/bin/terraform plan
 	cd azure/ && /usr/local/bin/terraform apply --auto-approve
