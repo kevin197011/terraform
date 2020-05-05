@@ -60,7 +60,7 @@ resource "vsphere_virtual_machine" "vm" {
       type = "ssh"
       host = var.vm_ip
       user = "root"
-      password = "p@ZS1DlhAYlnnrb&"
+      password = "xxxxxx"
       timeout = "10m"
     }
   }
@@ -76,7 +76,7 @@ resource "vsphere_virtual_machine" "vm" {
       type = "ssh"
       host = var.vm_ip
       user = "root"
-      password = "p@ZS1DlhAYlnnrb&"
+      password = "xxxxxx"
       timeout = "10m"
     }
   }
