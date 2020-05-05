@@ -135,5 +135,5 @@ func ExecTF(b bool) error {
 }
 
 func Usage() {
-	fmt.Println("Usage: \n    tf-cli -h [help info]")
+	fmt.Println("Usage: \n    cli -h [help info]")
 }
