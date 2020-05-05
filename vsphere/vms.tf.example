@@ -1,0 +1,14 @@
+module "k8s-node-01" {
+  source = "./modules/base"
+  vm_name = "k8s-node-01"
+  vsphere_folder = "k8s"
+  vsphere_host_datastore = {
+    host = "172.16.1.101"
+    datastore = "datastore101-2"
+  }
+  vm_ip = "172.16.1.21"
+  vm_cpu = 2
+  vm_mem = 4096
+  disk_size = 50
+}
+
