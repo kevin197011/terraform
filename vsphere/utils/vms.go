@@ -54,26 +54,24 @@ func NewVMVarsSlice(c int, vmName string, vsHost string, dataStore string, cpuNu
 	return &vmVars
 }
 
-func checkHost(h string, num int, limiter chan bool, wg *sync.WaitGroup, ips *[]string) {
+func checkIp(h string, num int, limiter chan bool, wg *sync.WaitGroup, ips *[]string) {
 	var host string
 	defer wg.Done()
 
-	networkHost1 := strings.Split(h, ".")
-	networkHost2 := networkHost1[:len(networkHost1)-1]
-	networkHost3 := strings.Join(networkHost2, ".")
+	host1 := strings.Split(h, ".")
+	host2 := host1[:len(host1)-1]
+	host3 := strings.Join(host2, ".")
 
-	host = networkHost3 + "." + strconv.Itoa(num)
-	//log.Println(host)
+	host = host3 + "." + strconv.Itoa(num)
+	res := Ping(host)
 
-	res := PingTool(host)
 	if res {
 		*ips = append(*ips, host)
 	}
-	//log.Println(ips)
 	<-limiter
 }
 
-func CallCheckHost(h string) *[]string {
+func MultipleCheckIp(h string) *[]string {
 	var IPS []string
 	limiter := make(chan bool, MaxProcess)
 	wg := &sync.WaitGroup{}
@@ -81,7 +79,7 @@ func CallCheckHost(h string) *[]string {
 	for i := 1; i < mask; i++ {
 		wg.Add(1)
 		limiter <- true
-		go checkHost(h, i, limiter, wg, &IPS)
+		go checkIp(h, i, limiter, wg, &IPS)
 	}
 	wg.Wait()
 	//log.Println(IPS)

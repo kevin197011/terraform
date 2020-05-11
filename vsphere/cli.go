@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-
 	vName := flag.String("vName", "", "虚拟机名")
 	vCpu := flag.Int("vCpu", 0, "CPU核数")
 	vMem := flag.Int("vMem", 0, "内存大小")
@@ -20,7 +19,6 @@ func main() {
 	dataStore := flag.String("dataStore", "", "主机存储")
 	vsphereFolder := flag.String("vsphereFolder", "", "虚拟机存放目录")
 	vCount := flag.Int("vCount", 0, "创建主机数量")
-
 	flag.Parse()
 
 	if len(os.Args) == 1 {
@@ -28,7 +26,7 @@ func main() {
 		return
 	}
 
-	ips := utils.CallCheckHost(*vHost)
+	ips := utils.MultipleCheckIp(*vHost)
 
 	sort.Strings(*ips)
 	fmt.Printf("\n\n未使用IP清单:\n %v\n", *ips)

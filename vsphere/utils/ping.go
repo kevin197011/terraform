@@ -16,7 +16,7 @@ type ICMP struct {
 	SequenceNum uint16
 }
 
-func PingTool(addr string) bool {
+func Ping(addr string) bool {
 	raddr, err := net.ResolveIPAddr("ip", addr)
 	if err != nil {
 		//fmt.Printf("Fail to resolve %s, %s\n", addr, err)
